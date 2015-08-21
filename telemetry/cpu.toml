@@ -1,0 +1,15 @@
+[LoadAvg]
+type = "FilePollingInput"
+ticker_interval = 1
+file_path = "/proc/loadavg"
+decoder = "LoadAvgDecoder"
+
+[LoadAvgDecoder]
+type = "SandboxDecoder"
+filename = "lua_decoders/linux_loadavg.lua"
+
+[RstEncoder]
+
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "RstEncoder"

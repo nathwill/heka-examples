@@ -1,0 +1,15 @@
+[DiskStats]
+type = "FilePollingInput"
+ticker_interval = 1
+file_path = "/sys/block/sda/stat"
+decoder = "DiskStatsDecoder"
+
+[DiskStatsDecoder]
+type = "SandboxDecoder"
+filename = "lua_decoders/linux_diskstats.lua"
+
+[RstEncoder]
+
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "RstEncoder"

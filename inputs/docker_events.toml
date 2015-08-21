@@ -1,0 +1,9 @@
+[DockerEventInput]
+type = "DockerEventInput"
+endpoint = "unix:///var/run/docker.sock"
+
+[RstEncoder]
+
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "RstEncoder"

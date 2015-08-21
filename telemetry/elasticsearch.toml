@@ -1,0 +1,26 @@
+[ElasticsearchClusterHealth]
+type = "HttpInput"
+url = "http://localhost:9200/_cluster/health"
+ticker_interval = 5
+success_severity = 6
+error_severity = 1
+decoder = "JsonDecoder"
+
+[JsonDecoder]
+type = "SandboxDecoder"
+filename = "lua_decoders/json.lua"
+memory_limit = 26214400
+instruction_limit = 1500000
+output_limit = 26214400
+
+  [JsonDecoder.config]
+  type = "elasticsearch_status"
+  payload_keep = false
+  map_fields = true
+  Severity = "severity"
+
+[RstEncoder]
+
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "RstEncoder"

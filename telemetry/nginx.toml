@@ -1,0 +1,20 @@
+[NginxStubStatusInput]
+type = "HttpInput"
+url = "http://localhost:8090/nginx_status"
+ticker_interval = 1
+success_severity = 6
+error_severity = 1
+decoder = "NginxStubStatusDecoder"
+
+[NginxStubStatusDecoder]
+filename = "lua_decoders/nginx_stub_status.lua"
+type = "SandboxDecoder"
+
+[NginxStubStatusDecoder.config]
+payload_keep = false
+
+[RstEncoder]
+
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "RstEncoder"

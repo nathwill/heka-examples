@@ -1,0 +1,15 @@
+[MemStats]
+type = "FilePollingInput"
+ticker_interval = 1
+file_path = "/proc/meminfo"
+decoder = "MemStatsDecoder"
+
+[MemStatsDecoder]
+type = "SandboxDecoder"
+filename = "lua_decoders/linux_memstats.lua"
+
+[RstEncoder]
+
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "RstEncoder"
